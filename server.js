@@ -11,8 +11,12 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+});
 
 app.listen(port, () => {
-    console.log("Server is running on port: ${port}");
+    console.log("Server is running on port:", port);
 });
